@@ -1,10 +1,12 @@
-module.exports = function getSeason(date) {
-  let month = date.getMonth()
-  if (typeof date == 'null') { return 'Unable to determine the time of year!' }
+module.exports = function getSeason(date = 'no-value') {
+
+  if (date === 'no-value')  return 'Unable to determine the time of year!' 
 
 
-  else if (date instanceof Date) {
- //   if (Object.prototype.toString.call(date) !=="[object Dte]") throw new Error('Caught fake date!');
+  if (date instanceof Date) {
+    if (Object.prototype.toString.call(date) !== "[object Date]") throw new Error('Caught fake date!');
+   const month=date.getMonth()
+   
     switch (month) {
       case 0:
       case 1:
@@ -28,5 +30,5 @@ module.exports = function getSeason(date) {
 
     }
   }
- // throw new Error('Wrong argument passed!')
+  throw new Error('Wrong argument passed!')
 };
