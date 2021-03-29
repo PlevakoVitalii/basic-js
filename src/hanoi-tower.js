@@ -1,6 +1,11 @@
-const CustomError = require("../extensions/custom-error");
+module.exports = function calculateHanoi(disksNumber, turnsSpeed) {
+  let turnsEachSecond = turnsSpeed / 3600;
+  let allturns = (2 ** disksNumber) - 1;
+  let allSeconds = allturns / turnsEachSecond;
+  let allSecondsRounded = Math.floor(allSeconds);
 
-module.exports = function calculateHanoi(/* disksNumber, turnsSpeed */) {
-  throw new CustomError('Not implemented');
-  // remove line with error and write your code here
+  return {
+    turns: allturns,
+    seconds: allSecondsRounded
+  }
 };
